@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Search Results for "{{ keyword }}"</h1>
+    <p>{{ num_results }} results found.</p>
+    {% if num_results == 0 %}
+        <p>No results found.</p>
+    {% else %}
+        <ul class="job-list">
+            {% for job in matched_jobs %}
+                <li class="job-preview">
+                    <h2>Title: {{ job.title }}</h2>
+                    <h3>Company: {{ job.company }}</h3>
+                    <a href="{{ url_for('job_details', job_id=job.id, keyword=keyword) }}">View Job</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <a href="{{ url_for('index') }}">Back to Home</a>
+</body>
+</html>
+

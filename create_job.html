@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Job Listing</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script>
+        function validateForm() {
+            var salary = document.forms["jobForm"]["salary"].value;
+            if (isNaN(salary) || salary === "") {
+                document.getElementById("salaryError").innerText = "Please enter a valid number for salary.";
+                return false;
+            } else {
+                document.getElementById("salaryError").innerText = "";
+            }
+            return true;
+        }
+        
+        function fetchRecommendedCategories() {
+            const description = document.getElementById("description").value;
+            fetch('/recommend_categories', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ description: description })
+            })
+            .then(response => response.json())
+            .then(data => {
+                const recommendedCategoriesDiv = document.getElementById("recommendedCategories");
+                recommendedCategoriesDiv.innerHTML = '';
+                data.categories.forEach(category => {
+                    const button = document.createElement('button');
+                    button.type = 'button';
+                    button.innerText = category;
+                    button.onclick = () => selectCategory(category);
+                    recommendedCategoriesDiv.appendChild(button);
+                });
+            });
+        }
+
+        function selectCategory(category) {
+            const categoriesInput = document.getElementById("categories");
+            categoriesInput.value = category;
+        }
+    </script>
+</head>
+<body>
+    <h1>Create Job Listing</h1>
+    <form name="jobForm" action="{{ url_for('save_job') }}" method="post" onsubmit="return validateForm()">
+        <label for="title">Job Title:</label>
+        <input type="text" id="title" name="title" required><br><br>
+
+        <label for="company">Company Name:</label>
+        <input type="text" id="company" name="company" required><br><br>
+        
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" required onblur="fetchRecommendedCategories()"></textarea><br><br>
+        
+        <label for="salary">Salary:</label>
+        <input type="number" id="salary" name="salary" required>
+        <span id="salaryError" style="color: red;"></span>
+        <span style="color: grey;">Please enter only digits.</span><br><br>
+        
+        <label for="categories">Enter Categories (comma-separated):</label>
+        <input type="text" id="categories" name="categories"><br><br>
+
+        <label for="defaultCategories">Default Categories:</label>
+        <div id="defaultCategories">
+            <button type="button" onclick="selectCategory('Accounting_Finance')">Accounting_Finance</button>
+            <button type="button" onclick="selectCategory('Engineering')">Engineering</button>
+            <button type="button" onclick="selectCategory('Healthcare_Nursing')">Healthcare_Nursing</button>
+            <button type="button" onclick="selectCategory('Sales')">Sales</button>
+        </div><br><br>
+
+        <button type="submit">Save</button>
+    </form>
+    <a href="{{ url_for('index') }}">Back to Home</a>
+</body>
+</html>
+

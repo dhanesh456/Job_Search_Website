@@ -1,0 +1,115 @@
+body {
+    font-family: Arial, sans-serif; /* Setting the font family to Arial */
+    margin: 20px; /* Adding margin around the body */
+}
+
+h1 {
+    color: #333; /* Setting the text color for h1 elements */
+    font-size: 24px; /* Setting the font size for h1 elements */
+}
+
+form {
+    margin-bottom: 20px; /* Adding margin below form elements */
+}
+
+input[type="text"],
+textarea {
+    padding: 10px; /* Adding padding inside text inputs and textareas */
+    font-size: 16px; /* Setting the font size for text inputs and textareas */
+    width: 300px; /* Setting the width for text inputs and textareas */
+}
+
+textarea {
+    height: 100px; /* Setting the height for textareas */
+}
+
+button {
+    padding: 10px 20px; /* Adding padding inside buttons */
+    font-size: 16px; /* Setting the font size for buttons */
+    cursor: pointer; /* Changing the cursor to pointer on hover */
+    background-color: #007BFF; /* Setting the background color for buttons */
+    color: white; /* Setting the text color for buttons */
+    border: none; /* Removing the border for buttons */
+    border-radius: 5px; /* Adding rounded corners to buttons */
+}
+
+button:hover {
+    background-color: #0056b3; /* Changing the background color on hover */
+}
+
+ul {
+    list-style-type: none; /* Removing the default list style */
+    padding: 0; /* Removing padding from the list */
+}
+
+li {
+    margin: 10px 0; /* Adding margin above and below list items */
+}
+
+a {
+    color: #007BFF; /* Setting the text color for links */
+    text-decoration: none; /* Removing the underline from links */
+}
+
+a:hover {
+    text-decoration: underline; /* Adding underline on hover */
+}
+
+.job-list {
+    display: flex; /* Using flexbox for the job list */
+    flex-direction: column; /* Arranging items in a column */
+    gap: 15px; /* Adding space between items */
+}
+
+.job-preview {
+    padding: 15px; /* Adding padding inside job previews */
+    border: 1px solid #ddd; /* Adding a border around job previews */
+    border-radius: 5px; /* Adding rounded corners to job previews */
+    background-color: #f9f9f9; /* Setting the background color for job previews */
+    font-size: 14px; /* Setting the font size for job previews */
+}
+
+.job-preview h2 {
+    margin: 0 0 10px; /* Adding margin below h2 headings */
+    color: #333; /* Setting the text color for h2 headings */
+    font-size: 18px; /* Setting the font size for h2 headings */
+}
+
+.job-preview h3 {
+    margin: 0 0 10px; /* Adding margin below h3 headings */
+    font-weight: normal; /* Setting normal font weight for h3 headings */
+    color: #555; /* Setting the text color for h3 headings */
+    font-size: 16px; /* Setting the font size for h3 headings */
+}
+
+.job-preview a {
+    font-size: 14px; /* Setting the font size for links in job previews */
+}
+
+.job-details {
+    margin-top: 20px; /* Adding margin above job details */
+    padding: 15px; /* Adding padding inside job details */
+    border: 1px solid #ddd; /* Adding a border around job details */
+    border-radius: 5px; /* Adding rounded corners to job details */
+    background-color: #f9f9f9; /* Setting the background color for job details */
+}
+
+.highlight {
+    background-color: yellow; /* Setting the background color for highlighted text */
+}
+
+/* Styles for recommended and default category buttons */
+#recommendedCategories button, #defaultCategories button {
+    margin: 5px; /* Adding margin around buttons */
+    padding: 10px; /* Adding padding inside buttons */
+    font-size: 14px; /* Setting the font size for buttons */
+    cursor: pointer; /* Changing the cursor to pointer on hover */
+    background-color: #f0f0f0; /* Setting the background color for buttons */
+    border: 1px solid #ccc; /* Adding a border to buttons */
+    border-radius: 5px; /* Adding rounded corners to buttons */
+    transition: background-color 0.3s ease; /* Adding a transition effect for background color */
+}
+
+#recommendedCategories button:hover, #defaultCategories button:hover {
+    background-color: #ddd; /* Changing the background color on hover */
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Post Job</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Post a New Job</h1>
+    <form action="{{ url_for('post_job') }}" method="post">
+        <label for="title">Job Title:</label>
+        <input type="text" name="title" required><br>
+
+        <label for="company">Company:</label>
+        <input type="text" name="company" required><br>
+
+        <label for="webindex">Web Index:</label>
+        <input type="text" name="webindex" required><br>
+
+        <label for="description">Job Description:</label>
+        <textarea name="description" required></textarea><br>
+
+        <label for="salary">Salary:</label>
+        <input type="text" name="salary"><br>
+
+        <label for="category">Recommended Category:</label>
+        <input type="text" name="category" value="{{ recommended_category }}" readonly><br>
+
+        <label for="override_category">Override Category (optional):</label>
+        <input type="text" name="override_category"><br>
+
+        <button type="submit">Submit</button>
+    </form>
+    <a href="{{ url_for('index') }}">Back to Home</a>
+</body>
+</html>

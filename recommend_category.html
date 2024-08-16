@@ -1,0 +1,43 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Recommend Categories</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script>
+        function addCategory(category) {
+            const categoriesInput = document.getElementById("categories");
+            const categories = categoriesInput.value.split(',').map(c => c.trim()).filter(c => c);
+            if (!categories.includes(category)) {
+                categories.push(category);
+            }
+            categoriesInput.value = categories.join(', ');
+        }
+    </script>
+</head>
+<body>
+    <h1>Recommend Categories</h1>
+    <form action="{{ url_for('save_job') }}" method="post">
+        <p><strong>Title:</strong> {{ job_details.title }}</p>
+        <p><strong>Company:</strong> {{ job_details.company }}</p>
+        <p><strong>Description:</strong> {{ job_details.description }}</p>
+        <p><strong>Salary:</strong> {{ job_details.salary }}</p>
+
+        <label for="categories">Enter Categories (comma-separated):</label>
+        <input type="text" id="categories" name="categories" value="{{ ', '.join(recommended_categories) }}"><br><br>
+
+        <label>Default Categories:</label>
+        <div id="default_categories">
+            <button type="button" onclick="addCategory('Accounting_Finance')">Accounting_Finance</button>
+            <button type="button" onclick="addCategory('Engineering')">Engineering</button>
+            <button type="button" onclick="addCategory('Healthcare_Nursing')">Healthcare_Nursing</button>
+            <button type="button" onclick="addCategory('Sales')">Sales</button>
+        </div><br>
+
+        <button type="submit">Save</button>
+    </form>
+    <a href="{{ url_for('index') }}">Back to Home</a>
+</body>
+</html>

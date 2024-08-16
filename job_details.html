@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Job Details</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Job Details</h1>
+    <div class="job-details">
+        <p><strong>Title:</strong> {{ job_details.title }}</p>
+        <p><strong>Webindex:</strong> {{ job_details.webindex }}</p>
+        <p><strong>Company:</strong> {{ job_details.company }}</p>
+        <p><strong>Description:</strong> {{ job_details.description }}</p>
+        <p><strong>Salary:</strong> {{ job_details.salary }}</p>
+        <p><strong>Categories:</strong> {{ job_details.category }}</p>
+    </div>
+    <a href="{{ url_for('search', keyword=keyword) }}">Back to Search Results</a>
+</body>
+</html>
+

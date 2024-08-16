@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Job Search</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            text-align: center;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            width: 300px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        a {
+            display: block;
+            margin-top: 20px;
+            font-size: 16px;
+            color: #007BFF;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to the Job Search Website</h1>
+        <form action="{{ url_for('search') }}" method="post" onsubmit="return validateForm()">
+            <input type="text" name="keyword" placeholder="Enter keyword" required>
+            <button type="submit">Search</button>
+        </form>
+        <a href="{{ url_for('create_job') }}">Create a New Job Listing</a>
+    </div>
+    <script>
+        function validateForm() {
+            var keyword = document.forms[0]["keyword"].value.trim();
+            if (keyword == "") {
+                alert("Keyword must be filled out");
+                return false;
+            }
+            document.forms[0]["keyword"].value = keyword;
+            return true;
+        }
+    </script>
+</body>
+</html>
+
